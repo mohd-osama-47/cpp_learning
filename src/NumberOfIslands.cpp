@@ -10,19 +10,25 @@ public:
         int m = grid.size(), n = grid[0].size();
         int no_of_elements{m*n}, islands{0};
         queue<int> search_queue;
-        vector<int> checkedIds(no_of_elements, 0);
-        int r{0},c{0}, rLocal{0}, cLocal{0}, checkId{0}, idNeighbour{0};
+        // vector<int> checkedIds(no_of_elements, 0);
+        int checkedIds[no_of_elements];
+        for (int& n : checkedIds)
+        {
+            n = 0;
+        }
+        int rLocal{0}, cLocal{0}, checkId{0}, idNeighbour{0};
         
         for (int i{0}; i < no_of_elements; i++)
         {
-            r = i/n;
-            c = i%n;
-            if (grid[r][c] == '1' && checkedIds[i] == 0)
+            if (checkedIds[i] == 0)
             {
-                // means this id is not visited, so consider it!
-                search_queue.push(i);
-                checkedIds[i] = 1;
-                islands += 1;
+                if(grid[i/n][i%n] == '1')
+                {
+                    // means this id is not visited, so consider it!
+                    search_queue.push(i);
+                    checkedIds[i] = 1;
+                    islands += 1;
+                }
             }
 
             while (!search_queue.empty())
