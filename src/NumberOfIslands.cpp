@@ -15,7 +15,7 @@ public:
         
         for (int i{0}; i < no_of_elements; i++)
         {
-            r = i/m;
+            r = i/n;
             c = i%n;
             if (grid[r][c] == '1' && checkedIds[i] == 0)
             {
@@ -30,7 +30,7 @@ public:
                 checkId = search_queue.front();
                 search_queue.pop();
 
-                rLocal = checkId/m;
+                rLocal = checkId/n;
                 cLocal = checkId%n;
 
                 // check all four directions here:
@@ -41,7 +41,7 @@ public:
                     if (checkedIds[idNeighbour] == 0)
                     {
                         checkedIds[idNeighbour] = 1;
-                        if (grid[(idNeighbour/m > m)? m : idNeighbour/m][idNeighbour%n] == '1')
+                        if (grid[rLocal][cLocal-1] == '1')
                         {
                             search_queue.push(idNeighbour);
                         }
@@ -54,7 +54,7 @@ public:
                     if (checkedIds[idNeighbour] == 0)
                     {
                         checkedIds[idNeighbour] = 1;
-                        if (grid[(idNeighbour/m > m)? m : idNeighbour/m][idNeighbour%n] == '1')
+                        if (grid[rLocal][cLocal+1] == '1')
                         {
                             search_queue.push(idNeighbour);
                         }
@@ -68,7 +68,7 @@ public:
                     if (checkedIds[idNeighbour] == 0)
                     {
                         checkedIds[idNeighbour] = 1;
-                        if (grid[(idNeighbour/m > m)? m : idNeighbour/m][idNeighbour%n] == '1')
+                        if (grid[rLocal-1][cLocal] == '1')
                         {
                             search_queue.push(idNeighbour);
                         }
@@ -81,7 +81,7 @@ public:
                     if (checkedIds[idNeighbour] == 0)
                     {
                         checkedIds[idNeighbour] = 1;
-                        if (grid[(idNeighbour/m > m)? m : idNeighbour/m][idNeighbour%n] == '1')
+                        if (grid[rLocal+1][cLocal] == '1')
                         {
                             search_queue.push(idNeighbour);
                         }
