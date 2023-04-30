@@ -1,6 +1,8 @@
 #include <vector>
 #include <queue>
 #include <iostream>
+#include <map>
+
 
 using namespace std;
 
@@ -103,8 +105,13 @@ public:
 
 int main()
 {
-    vector<vector<char>> ex = {{'1','1','1','1','0'},{'1','1','0','1','0'},{'1','1','0','0','0'},{'0','0','0','0','0'}};
+    // vector<vector<char>> ex = {{'1','1','1','1','0'},{'1','1','0','1','0'},{'1','1','0','0','0'},{'0','0','0','0','0'}};
 
-    Solution sol;
-    cout<<sol.numIslands(ex)<<endl;
+    // Solution sol;
+    map<int, int> map;
+    map[2]++;
+    map[1]++;
+    map[3]++;
+    cout<<map.begin()->first;
+    // cout<<sol.numIslands(ex)<<endl;
 }
